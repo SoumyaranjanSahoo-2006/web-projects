@@ -10,7 +10,7 @@ This repository is created for **learning, practice, and portfolio showcase**.
 ### ☁️ Weather Explorer
 A responsive weather application that shows real-time weather data and forecasts using the OpenWeather API.
 
-📁 Folder: `weather-explorer/`
+📁 Folder: `Weather-app/`
 
 ---
 
@@ -36,18 +36,11 @@ A responsive weather application that shows real-time weather data and forecasts
    ```bash
    git clone https://github.com/SoumyaranjanSahoo-2006/web-projects.git
   
-## 2.
-Open any project folder
-
-## 3.
-Run index.html in your browser
+ 2.Open any project folder
+ 3.Run index.html in your browser
 
 ## 📌 Author
 Soumya Ranjan Sahoo
 Frontend Developer | B.Tech CSE Student
 
 
-
----
-
-# ☁️ README for **Weather Explorer App**
