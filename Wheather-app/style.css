@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  transition: background 0.5s ease;
+}
+
+.app-container {
+  width: 95%;
+  max-width: 650px;
+  background: rgba(20, 20, 20, 0.85);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+.app-header h1 {
+  color: #ff8c00;
+  font-size: 2.2rem;
+}
+
+.app-header p {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+/* Search */
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background: #444;
+  color: #fff;
+}
+
+.search-container button {
+  padding: 12px 22px;
+  border-radius: 25px;
+  border: none;
+  background: #ff8c00;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #cc6b00;
+}
+
+/* Current Weather */
+.current-weather {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background: #333;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.current-weather img {
+  width: 80px;
+}
+
+.info h2 {
+  color: #ff8c00;
+}
+
+.info p {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+/* Forecast */
+.forecast {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.day {
+  background: #333;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.weekday {
+  color: #ff8c00;
+  font-weight: bold;
+}
+
+.day img {
+  width: 50px;
+}
+
+.temp {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .forecast {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .current-weather {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Backgrounds */
+body.clear {
+  background-image: url("https://images.pexels.com/photos/459451/pexels-photo-459451.jpeg");
+}
+body.clouds {
+  background-image: url("https://images.pexels.com/photos/531756/pexels-photo-531756.jpeg");
+}
+body.rain {
+  background-image: url("https://images.pexels.com/photos/110874/pexels-photo-110874.jpeg");
+}
+body.snow {
+  background-image: url("https://images.pexels.com/photos/688660/pexels-photo-688660.jpeg");
+}
+body.default {
+  background-image: url("https://images.pexels.com/photos/459451/pexels-photo-459451.jpeg");
+}
