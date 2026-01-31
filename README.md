@@ -36,11 +36,11 @@ A responsive weather application that shows real-time weather data and forecasts
    ```bash
    git clone https://github.com/SoumyaranjanSahoo-2006/web-projects.git
   
- 2.Open any project folder
- 3.Run index.html in your browser
+2.Open any project folder <br>
+3.Run index.html in your browser
 
 ## 📌 Author
-Soumya Ranjan Sahoo
+Soumya Ranjan Sahoo <br>
 Frontend Developer | B.Tech CSE Student
 
 
