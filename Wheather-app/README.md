@@ -1,6 +1,4 @@
 
-### ✅ Content:
-```md
 # ☁️ Weather Explorer
 
 A **fully responsive weather application** that displays real-time weather conditions and a 4-day forecast for any city using the **OpenWeather API**.
