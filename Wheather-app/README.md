@@ -24,10 +24,10 @@ A **fully responsive weather application** that displays real-time weather condi
 ---
 
 ## 📂 Project Structure
-Weather-app/
-├── index.html
-├── style.css
-└── script.js
+Weather-app/ <br>
+├── index.html <br>
+├── style.css  <br>
+└── script.js  <br>
 
 
 ---
