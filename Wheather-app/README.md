@@ -52,15 +52,11 @@ Open index.html in your browser
 Enter a city name and click Search
 
 
-🚀 Live Demo (Optional)
-
-If hosted on GitHub Pages:
-
-https://YOUR_USERNAME.github.io/web-projects/weather-explorer/
+🚀 Live Demo 
+https://wheather-explorer.netlify.app/
 
 👨‍💻 Author
-
-Soumya Ranjan Sahoo
+Soumyaranjan Sahoo
 
 ⭐ If you like this project, don’t forget to star the repository!
 
