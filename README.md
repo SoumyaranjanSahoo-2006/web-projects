@@ -40,7 +40,6 @@ A responsive weather application that shows real-time weather data and forecasts
 2.Open any project folder <br>
 3.Run index.html in your browser
 
-##Other prj comming soon
 
 ## 📌 Author
 Soumya Ranjan Sahoo <br>
