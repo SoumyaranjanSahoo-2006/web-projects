@@ -19,7 +19,7 @@ A responsive weather application that shows real-time weather data and forecasts
 - HTML5
 - CSS3 (Responsive Design)
 - JavaScript (ES6)
-- Public APIs
+- Public APIs (OpenWeather)
 - Git & GitHub
 
 ---
