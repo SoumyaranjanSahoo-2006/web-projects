@@ -1,3 +1,4 @@
+/* ===== RESET & BASE ===== */
 * {
   margin: 0;
   padding: 0;
@@ -15,6 +16,14 @@ body {
   transition: background 0.5s ease;
 }
 
+/* ===== WRAPPER TO STACK APP + CREDITS ===== */
+.main-wrapper {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center;
+}
+
+/* ===== MAIN CONTAINER ===== */
 .app-container {
   width: 95%;
   max-width: 650px;
@@ -23,11 +32,13 @@ body {
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
   text-align: center;
+  transition: all 0.3s ease;
 }
 
+/* ===== HEADER ===== */
 .app-header h1 {
   color: #ff8c00;
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 .app-header p {
@@ -35,11 +46,12 @@ body {
   margin-bottom: 20px;
 }
 
-/* Search */
+/* ===== SEARCH BAR ===== */
 .search-container {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .search-container input {
@@ -50,22 +62,39 @@ body {
   outline: none;
   background: #444;
   color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .search-container button {
   padding: 12px 22px;
   border-radius: 25px;
   border: none;
-  background: #ff8c00;
-  color: #fff;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .search-container button:hover {
-  background: #cc6b00;
+  opacity: 0.9;
 }
 
-/* Current Weather */
+/* Search button style */
+.search-container button:nth-child(2) {
+  background: #ff8c00;
+  color: #fff;
+}
+
+/* Location button */
+.location-btn {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== CURRENT WEATHER ===== */
 .current-weather {
   display: flex;
   gap: 15px;
@@ -74,6 +103,7 @@ body {
   padding: 15px;
   border-radius: 15px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .current-weather img {
@@ -89,7 +119,7 @@ body {
   font-size: 1.1rem;
 }
 
-/* Forecast */
+/* ===== FORECAST ===== */
 .forecast {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -102,13 +132,13 @@ body {
   border-radius: 12px;
 }
 
+.day img {
+  width: 50px;
+}
+
 .weekday {
   color: #ff8c00;
   font-weight: bold;
-}
-
-.day img {
-  width: 50px;
 }
 
 .temp {
@@ -116,31 +146,261 @@ body {
   font-weight: bold;
 }
 
-/* Mobile Responsive */
+/* ===== WEATHER EFFECTS ===== */
+#weather-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rain-drop {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  animation: rain-fall linear infinite;
+}
+
+@keyframes rain-fall {
+  0% { transform: translateY(-100px); }
+  100% { transform: translateY(100vh); }
+}
+
+.snowflake {
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  animation: snow-fall linear infinite;
+}
+
+@keyframes snow-fall {
+  0% { transform: translateY(-50px); }
+  100% { transform: translateY(100vh); }
+}
+
+/* ===== CREDITS BELOW MAIN CONTAINER ===== */
+.credits {
+  margin-top: 10px;
+  font-size: 0.7rem;
+  color: #aaa;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.credits span {
+  color: #ff8c00;
+  font-weight: bold;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-links a {
+  color: #aaa;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #ff8c00;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
-  .forecast {
-    grid-template-columns: repeat(2, 1fr);
+  .app-container {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .app-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .search-container input {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
+
+  .search-container button {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  .location-btn .location-text {
+    display: none;
   }
 
   .current-weather {
     flex-direction: column;
     text-align: center;
   }
+
+  .forecast {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .day img {
+    width: 40px;
+  }
+
+  .credits {
+    font-size: 0.6rem;
+    gap: 3px;
+  }
+  .social-links a {
+    font-size: 0.8rem;
+  }
 }
 
-/* Backgrounds */
-body.clear {
-  background-image: url("https://images.pexels.com/photos/459451/pexels-photo-459451.jpeg");
+/* ===== BACKGROUNDS ===== */
+body.clear-day {
+  background-image: url("https://images.pexels.com/photos/912110/pexels-photo-912110.jpeg?auto=compress&cs=tinysrgb&w=1920");
 }
-body.clouds {
-  background-image: url("https://images.pexels.com/photos/531756/pexels-photo-531756.jpeg");
+body.clear-night {
+  background-image: url("https://images.pexels.com/photos/1257860/pexels-photo-1257860.jpeg?auto=compress&cs=tinysrgb&w=1920");
 }
-body.rain {
-  background-image: url("https://images.pexels.com/photos/110874/pexels-photo-110874.jpeg");
+body.clouds-day {
+  background-image: url("https://images.pexels.com/photos/531756/pexels-photo-531756.jpeg?auto=compress&cs=tinysrgb&w=1920");
 }
-body.snow {
-  background-image: url("https://images.pexels.com/photos/688660/pexels-photo-688660.jpeg");
+body.clouds-night {
+  background-image: url("https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=1920");
 }
-body.default {
-  background-image: url("https://images.pexels.com/photos/459451/pexels-photo-459451.jpeg");
+body.rain-day {
+  background-image: url("https://images.pexels.com/photos/110874/pexels-photo-110874.jpeg?auto=compress&cs=tinysrgb&w=1920");
+}
+body.rain-night {
+  background-image: url("https://images.pexels.com/photos/753325/pexels-photo-753325.jpeg?auto=compress&cs=tinysrgb&w=1920");
+}
+body.snow-day {
+  background-image: url("https://images.pexels.com/photos/688660/pexels-photo-688660.jpeg?auto=compress&cs=tinysrgb&w=1920");
+}
+body.snow-night {
+  background-image: url("https://images.pexels.com/photos/688660/pexels-photo-688660.jpeg?auto=compress&cs=tinysrgb&w=1920");
+}
+body {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+/* ===== MAIN WRAPPER SPACING ===== */
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0; /* top & bottom space for desktop */
+  gap: 20px;       /* space between main container and credits */
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .main-wrapper {
+    padding: 20px 0; /* reduce top & bottom padding on mobile */
+    gap: 10px;       /* smaller space between main container & credits */
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  /* Make main container slightly wider */
+  .app-container {
+    max-width: 96%;
+    padding: 15px;
+  }
+
+  /* Search container: input + search button side by side */
+  .search-container {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;  /* allow wrapping for location button */
+  }
+
+  /* Search input smaller to fit */
+  .search-container input {
+    flex: 1;          /* fill remaining space */
+    padding: 8px 10px;
+    font-size: 0.95rem;
+  }
+
+  .search-container button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  /* Location button below search bar */
+  .location-btn {
+    width: 100%;      /* full width below */
+    margin-top: 8px;
+    justify-content: center;
+  }
+
+  /* Hide location text, only show icon */
+  .location-btn .location-text {
+    display: none;
+  }
+
+  /* Current weather adjustments */
+  .current-weather {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .current-weather img {
+    width: 60px;
+  }
+
+  .info h2 {
+    font-size: 1.2rem;
+  }
+
+  .info p {
+    font-size: 1rem;
+  }
+
+  /* Forecast adjustments */
+  .forecast {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .day {
+    padding: 6px;
+  }
+
+  .day img {
+    width: 35px;
+  }
+
+  .weekday {
+    font-size: 0.85rem;
+  }
+
+  .temp {
+    font-size: 0.8rem;
+  }
+
+  /* Credits adjustments */
+  .credits {
+    font-size: 0.6rem;
+    gap: 3px;
+  }
+
+  .social-links a {
+    font-size: 0.8rem;
+  }
 }

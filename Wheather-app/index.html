@@ -5,21 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weather Explorer</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
-<body class="default">
+<body>
+  <div class="main-wrapper">
+    <!-- ===== MAIN WEATHER APP ===== -->
+    <div class="app-container">
+      <!-- Header -->
+      <header class="app-header">
+        <h1>Weather Explorer</h1>
+        <p>Real-time weather, beautifully presented 🌦️</p>
+      </header>
 
-  <div class="app-container">
-    <header class="app-header">
-      <h1>Weather Explorer</h1>
-      <p>Real-time weather, beautifully presented 🌦️</p>
-    </header>
+      <!-- Search + Location -->
+      <div class="search-container">
+        <input type="text" id="city" placeholder="Enter city name..." />
+        <button onclick="getWeather()">Search</button>
+        <button class="location-btn" onclick="getWeatherByLocation()">
+          <i class="fas fa-map-marker-alt"></i>
+          <span class="location-text">My Location</span>
+        </button>
+      </div>
 
-    <div class="search-container">
-      <input type="text" id="city" placeholder="Enter city name..." />
-      <button onclick="getWeather()">Search</button>
-    </div>
-
-    <div class="weather-container">
+      <!-- Current Weather -->
       <section class="current-weather">
         <div class="icon"></div>
         <div class="info">
@@ -29,6 +38,7 @@
         </div>
       </section>
 
+      <!-- Forecast -->
       <section class="forecast">
         <div class="day">
           <p class="weekday">Day</p>
@@ -52,8 +62,22 @@
         </div>
       </section>
     </div>
+
+    <!-- ===== CREDITS BELOW MAIN CONTAINER ===== -->
+    <div class="credits">
+      <p>Made by <span>Soumyaranjan Sahoo</span></p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/vertx.dev/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/soumyaranjan-sahoo2006/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/SoumyaranjanSahoo-2006" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
   </div>
 
+  <!-- Weather effects overlay -->
+  <div id="weather-effect"></div>
+
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
