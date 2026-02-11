@@ -38,7 +38,8 @@ A responsive weather application that shows real-time weather data and forecasts
    git clone https://github.com/SoumyaranjanSahoo-2006/web-projects.git
   
 2.Open any project folder <br>
-3.Run index.html in your browser
+3.Run index.html in your browser <br>
+4.Now you can saw the result
 
 ## 📌 Author
 Soumya Ranjan Sahoo <br>
