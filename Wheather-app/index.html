@@ -3,81 +3,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather Explorer</title>
+  <title>WeatherCanvas </title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700&display=swap">
 </head>
-<body>
-  <div class="main-wrapper">
-    <!-- ===== MAIN WEATHER APP ===== -->
-    <div class="app-container">
-      <!-- Header -->
-      <header class="app-header">
-        <h1>Weather Explorer</h1>
-        <p>Real-time weather, beautifully presented 🌦️</p>
-      </header>
-
-      <!-- Search + Location -->
-      <div class="search-container">
-        <input type="text" id="city" placeholder="Enter city name..." />
-        <button onclick="getWeather()">Search</button>
-        <button class="location-btn" onclick="getWeatherByLocation()">
-          <i class="fas fa-map-marker-alt"></i>
-          <span class="location-text">My Location</span>
-        </button>
-      </div>
-
-      <!-- Current Weather -->
-      <section class="current-weather">
-        <div class="icon"></div>
-        <div class="info">
-          <h2 id="cityName">City</h2>
-          <p id="temperature">-- °C</p>
-          <p id="description">--</p>
+<body class="default-bg">
+    <div id="weather-effect"></div>
+    
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-globe-americas logo-icon"></i>
+                    <div>
+                        <h1>WeatherCanvas</h1>
+                        <div class="tagline">responsive · vivid · accurate</div>
+                    </div>
+                </div>
+                
+                <div class="search-container">
+                    <input type="text" class="search-box" placeholder="Search city..." id="search-input">
+                    <button class="location-btn" id="location-btn" title="Use my location" aria-label="Get location"><i class="fas fa-location-arrow"></i></button>
+                    <button class="search-btn" id="search-btn" title="Search" aria-label="Search"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="unit-toggle">
+                <button class="unit-btn active" id="celsius-btn">°C</button>
+                <button class="unit-btn" id="fahrenheit-btn">°F</button>
+            </div>
+        </header>
+        
+        <div class="alert-banner" id="alert-banner" style="display: none;">
+            <div class="alert-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div><h3 id="alert-title">Weather Alert</h3><p id="alert-text"></p></div>
         </div>
-      </section>
-
-      <!-- Forecast -->
-      <section class="forecast">
-        <div class="day">
-          <p class="weekday">Day</p>
-          <div class="icon"></div>
-          <p class="temp">-- °C</p>
+        
+        <div class="recent-searches" id="recent-searches" style="display: none;">
+            <div class="recent-title"><i class="fas fa-history"></i><span>Recent Searches</span></div>
+            <div class="recent-list" id="recent-list"></div>
         </div>
-        <div class="day">
-          <p class="weekday">Day</p>
-          <div class="icon"></div>
-          <p class="temp">-- °C</p>
-        </div>
-        <div class="day">
-          <p class="weekday">Day</p>
-          <div class="icon"></div>
-          <p class="temp">-- °C</p>
-        </div>
-        <div class="day">
-          <p class="weekday">Day</p>
-          <div class="icon"></div>
-          <p class="temp">-- °C</p>
-        </div>
-      </section>
+        
+        <main>
+            <div class="spinner" id="spinner"></div>
+            
+            <div class="error-message" id="error-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3 id="error-title">Unable to Load Weather Data</h3>
+                <p id="error-text"></p>
+                <button id="retry-btn">Retry</button>
+            </div>
+            
+            <div class="weather-grid" id="weather-content">
+                <!-- Current weather card -->
+                <div class="current-weather-card">
+                    <div class="current-weather-header">
+                        <div class="location-info">
+                            <h2 id="location-name">Detecting your location...</h2>
+                            <p id="location-details"><i class="fas fa-map-marker-alt"></i><span>Please allow location access</span></p>
+                            <div class="time-display"><i class="far fa-clock"></i><span id="current-time">Loading time...</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="temperature-display">
+                        <div class="weather-icon-large" id="weather-icon"><i class="fas fa-compass sunny-icon"></i></div>
+                        <div class="temperature" id="temperature">--°C</div>
+                        <div class="weather-condition" id="weather-condition">Detecting...</div>
+                        <div class="weather-description" id="weather-description"></div>
+                    </div>
+                    
+                    <div class="weather-details-grid">
+                        <div class="detail-item"><div class="detail-icon"><i class="fas fa-wind"></i></div><div class="detail-info"><h3>Wind</h3><p id="wind-speed">-- m/s</p></div></div>
+                        <div class="detail-item"><div class="detail-icon"><i class="fas fa-tint"></i></div><div class="detail-info"><h3>Humidity</h3><p id="humidity">--%</p></div></div>
+                        <div class="detail-item"><div class="detail-icon"><i class="fas fa-temperature-low"></i></div><div class="detail-info"><h3>Feels Like</h3><p id="feels-like">--°C</p></div></div>
+                        <div class="detail-item"><div class="detail-icon"><i class="fas fa-compress-arrows-alt"></i></div><div class="detail-info"><h3>Pressure</h3><p id="pressure">-- hPa</p></div></div>
+                        <div class="detail-item"><div class="detail-icon"><i class="fas fa-eye"></i></div><div class="detail-info"><h3>Visibility</h3><p id="visibility">-- km</p></div></div>
+                        <div class="detail-item"><div class="detail-icon"><i class="fas fa-cloud"></i></div><div class="detail-info"><h3>Clouds</h3><p id="cloud-cover">--%</p></div></div>
+                    </div>
+                </div>
+                
+                <!-- Forecast card -->
+                <div class="forecast-card">
+                    <div class="section-title"><i class="fas fa-calendar-alt"></i>5-Day Forecast</div>
+                    <div class="forecast-container" id="forecast-container">
+                        <div class="forecast-item"><div class="forecast-day">Loading...</div><div class="forecast-icon"><i class="fas fa-sync fa-spin"></i></div><div class="forecast-temp"><span class="temp-high">--°</span><span class="temp-low">--°</span></div><div class="forecast-condition">Loading</div></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional info cards -->
+            <div class="additional-grid">
+                <div class="info-card">
+                    <div class="section-title"><i class="fas fa-sun"></i>Sun Times</div>
+                    <div class="detail-item"><div class="detail-icon"><i class="fas fa-sunrise"></i></div><div class="detail-info"><h3>Sunrise</h3><p id="sunrise">--:--</p></div></div>
+                    <div class="detail-item" style="margin-top:10px;"><div class="detail-icon"><i class="fas fa-sunset"></i></div><div class="detail-info"><h3>Sunset</h3><p id="sunset">--:--</p></div></div>
+                </div>
+                <div class="info-card">
+                    <div class="section-title"><i class="fas fa-wind"></i>Air Quality</div>
+                    <div class="detail-item"><div class="detail-icon"><i class="fas fa-lungs"></i></div><div class="detail-info"><h3>AQI</h3><p id="air-quality">Loading...</p></div></div>
+                    <div class="detail-item" style="margin-top:10px;"><div class="detail-icon"><i class="fas fa-smog"></i></div><div class="detail-info"><h3>UV Index</h3><p id="uv-index">--</p></div></div>
+                </div>
+                <div class="info-card">
+                    <div class="section-title"><i class="fas fa-lightbulb"></i>Weather Tips</div>
+                    <div class="detail-item"><div class="detail-icon"><i class="fas fa-umbrella"></i></div><div class="detail-info"><h3>Today's Tip</h3><p id="weather-tip">Loading tip...</p></div></div>
+                    <div class="detail-item" style="margin-top:10px;"><div class="detail-icon"><i class="fas fa-tshirt"></i></div><div class="detail-info"><h3>What to Wear</h3><p id="clothing-tip">Loading...</p></div></div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="credit">
+                <h3>WeatherCanvas</h3>
+                <p>Created by <strong>Soumyaranjan Sahoo</strong> — fully responsive · real‑time data</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/vertx.dev/" class="social-icon instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/SoumyaranjanSahoo-2006" class="social-icon github" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/soumyaranjan-sahoo2006/" class="social-icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://soumyaranjansahoo-2006.github.io/Portfolio/" class="social-icon" title="portfolio"><i class="fa-solid fa-globe"></i></a>
+                </div>
+            </div>
+            <p>Powered by OpenWeatherMap • dynamic backgrounds • live effects</p>
+            <p style="font-size: 0.9rem; margin-top: 12px; opacity: 0.8;">© 2026 WeatherCanvas. All rights reserved.</p>
+        </footer>
     </div>
 
-    <!-- ===== CREDITS BELOW MAIN CONTAINER ===== -->
-    <div class="credits">
-      <p>Made by <span>Soumyaranjan Sahoo</span></p>
-      <div class="social-links">
-        <a href="https://www.instagram.com/vertx.dev/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/soumyaranjan-sahoo2006/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/SoumyaranjanSahoo-2006" target="_blank"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Weather effects overlay -->
-  <div id="weather-effect"></div>
-
-  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
