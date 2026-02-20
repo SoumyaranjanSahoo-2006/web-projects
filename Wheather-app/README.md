@@ -54,9 +54,7 @@ Enter a city name and click Search
 
 🚀 Live Demo (Optional)
 
-If hosted on GitHub Pages:
-
-https://YOUR_USERNAME.github.io/web-projects/weather-explorer/
+https://sky-scribe.netlify.app/
 
 👨‍💻 Author
 
