@@ -52,7 +52,7 @@ Open index.html in your browser
 Enter a city name and click Search
 
 
-🚀 Live Demo (Optional)
+🚀 Live Demo 
 
 https://sky-scribe.netlify.app/
 
