@@ -58,7 +58,7 @@ https://sky-scribe.netlify.app/
 
 👨‍💻 Author
 
-Soumya Ranjan 
+Soumya Ranjan Sahoo
 
 ⭐ If you like this project, don’t forget to star the repository!
 
