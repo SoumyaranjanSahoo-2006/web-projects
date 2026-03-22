@@ -9,7 +9,7 @@ This repository is created for **learning, practice, and portfolio showcase**.
 ## 📂 Projects Included
 
 ### ☁️ Weather Explorer
-A responsive weather application that shows real-time weather data and forecasts using the OpenWeather AP.
+A responsive weather application that shows real-time weather data and forecasts using the OpenWeather API.
 
 📁 Folder: `Weather-app/`
 
