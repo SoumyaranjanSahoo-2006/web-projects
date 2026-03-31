@@ -38,7 +38,7 @@ This project uses the **OpenWeather API**.
 ### Steps:
 1. Go to https://openweathermap.org
 2. Create an account
-3. Generate your API key
+3. Generate your API 
 4. Replace this line in `script.js`:
    ```js
    const apiKey = "YOUR_API_KEY";
